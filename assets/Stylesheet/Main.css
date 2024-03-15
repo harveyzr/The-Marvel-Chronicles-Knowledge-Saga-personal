@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url(../images/wp6223089.jpg); 
+    background-size: cover;
+    background-position: center;
+    color: #ea0909; 
+}
+
+h1 {
+    font-size: 36px;
+    text-align: center;
+    padding-top: 100px; 
+    background-image: linear-gradient(to right, 
+    red, blue, rgb(6, 174, 183), rgb(189, 14, 189));
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 300px;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #ff0000; 
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #cc0000; 
+}
+
+.white-box {
+width:80%;
+margin: 0 auto;
+height: 80vh;
+background-color: white;
+text-align: center;
+font-size: 24px;
+}
