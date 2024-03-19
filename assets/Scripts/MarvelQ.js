@@ -1,16 +1,18 @@
 var publicKey = '8d2bc57ce15d6a17eeca97819795c187';
+var baseUrl = 'https://gateway.marvel.com/v1/public/';
 
 
 function quizCharacters() {
     var offset = Math.floor(Math.random() * 1490);
-    var url = 'https://gateway.marvel.com/v1/public/characters?apikey=${publicKey}&offset=${offset}&limit=1';
+    var url = `${baseUrl}characters?apikey=${publicKey}&offset=${offset}&limit=1`;
 
     fetch(url)
     .then(response => response.json())
         .then(data => {
             var currentCharacter = data.data.results[0];
-            var characterName = character.name;
-            var image = `${character.thumbnail.path}.${character.thumbnail.extension}`;
+            var characterName = currentCharacter.name;
+            var image = `${currentCharacter.thumbnail.path}.${currentCharacter.thumbnail.extension}`;
+            displayQuiz(characterName, image);
         })
         .catch(error => console.log('Error fetching character:', error));
 };
@@ -54,12 +56,14 @@ function displayQuiz(characterName, image) {
     .catch(error => console.log('Error fetching options:', error));
 }
 
-document.getElementById('next-btn').addEventListener('click', quizCharacters);
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('next-btn').addEventListener('click', quizCharacters);
+
 
 // Load a random character when the page loads
 quizCharacters();
 
 
-
+});
 
 
