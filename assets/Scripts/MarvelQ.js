@@ -39,6 +39,7 @@ function quizCharacters() {
         .then(data => {
             var currentCharacter = data.data.results[0];
             var characterName = currentCharacter.name;
+            var image = `${currentCharacter.thumbnail.path}.${currentCharacter.thumbnail.extension}`;
             fetchCharacterImage(currentCharacter, 0);
             displayQuiz(characterName);
         })
@@ -57,10 +58,10 @@ function displayQuiz(characterName) {
     fetch(apiUrl)
     .then(response => response.json())
         .then(data => {
-            var othercharacters = data.data.results.map(character => character.name);
-            var options = othercharacters.concat(characterName);
-            options.sort(() => Math.random() - 0.5);
-
+            var otherCharacters = data.data.results;
+            var options = otherCharacters.map(character => character.name);
+            options.push(characterName); 
+            options = shuffleArray(options);
             options = options.slice(0, 4);
 
             options.forEach(option => {
@@ -78,6 +79,14 @@ function displayQuiz(characterName) {
         });
     })
     .catch(error => console.log('Error fetching options:', error));
+}
+
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
