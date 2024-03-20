@@ -1,9 +1,12 @@
 var publicKey = '8d2bc57ce15d6a17eeca97819795c187';
 var baseUrl = 'https://gateway.marvel.com/v1/public/';
+var score = 0;
+var questionCount = 0;
 
 function fetchCharacterImage(character, retryCount) {
     var image = `${character.thumbnail.path}.${character.thumbnail.extension}`;
     var imageDisplay = document.getElementById('imageDisplay');
+    imageDisplay.src = '';
 
     // Create an image element to pre-load the image and check for errors
     var tempImage = new Image();
@@ -22,7 +25,6 @@ function fetchCharacterImage(character, retryCount) {
         } else {
             // Display a placeholder image if retries fail
             imageDisplay.src = 'assets/images/placeholder.avif';
-            quizCharacters();
         }
     };
 
@@ -32,6 +34,12 @@ function fetchCharacterImage(character, retryCount) {
 
 
 function quizCharacters() {
+
+    if (questionCount >= 10) {
+        endQuiz();
+        return; // Exit the function if the quiz has ended
+    }
+
     var offset = Math.floor(Math.random() * 1490);
     var url = `${baseUrl}characters?apikey=${publicKey}&offset=${offset}&limit=1`;
 
@@ -42,6 +50,7 @@ function quizCharacters() {
             var characterName = currentCharacter.name;
             fetchCharacterImage(currentCharacter, 0);
             displayQuiz(characterName);
+            questionCount++; 
         })
         .catch(error => console.log('Error fetching character:', error));
 };
@@ -54,7 +63,7 @@ function displayQuiz(characterName) {
     choices.innerHTML = '';
 
     var offset = Math.floor(Math.random() * 1490);
-    
+
     var apiUrl = `${baseUrl}characters?apikey=${publicKey}&offset=${offset}&limit=3`;
     fetch(apiUrl)
     .then(response => response.json())
@@ -71,6 +80,7 @@ function displayQuiz(characterName) {
                 choiceButtons.onclick = function() {
                 if (option === characterName) {
                     results.textContent = 'Correct!';
+                    score++;
                 } else {
                     results.textContent = 'Incorrect. Try again!';
                 }
@@ -88,6 +98,12 @@ function shuffleArray(array) {
     }
     return array;
 }
+
+function endQuiz() {
+    var quizContainer = document.getElementById('quiz-container');
+    quizContainer.innerHTML = `<h2>Quiz ended</h2><p>Your score: ${score}</p>`;
+}
+
     document.getElementById('next-btn').addEventListener('click', quizCharacters);
 
 
