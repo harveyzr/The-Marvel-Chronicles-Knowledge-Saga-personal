@@ -1,6 +1,34 @@
 var publicKey = '8d2bc57ce15d6a17eeca97819795c187';
 var baseUrl = 'https://gateway.marvel.com/v1/public/';
 
+function fetchCharacterImage(character, retryCount) {
+    var image = `${character.thumbnail.path}.${character.thumbnail.extension}`;
+    var imageDisplay = document.getElementById('imageDisplay');
+
+    // Create an image element to pre-load the image and check for errors
+    var tempImage = new Image();
+    tempImage.onload = function() {
+        // Image loaded successfully, display it
+        imageDisplay.src = image;
+    };
+    tempImage.onerror = function() {
+        // Image failed to load, handle error
+        if (retryCount < 3) {
+            // Retry fetching the image
+            var retryDelay = Math.pow(2, retryCount) * 1000; 
+            setTimeout(function() {
+                fetchCharacterImage(character, retryCount + 1);
+            }, retryDelay);
+        } else {
+            // Display a placeholder image if retries fail
+            imageDisplay.src = './assets/images/placeholder.avif';
+        }
+    };
+
+    // Set the source of the temporary image to trigger loading
+    tempImage.src = image;
+}
+
 
 function quizCharacters() {
     var offset = Math.floor(Math.random() * 1490);
@@ -11,8 +39,7 @@ function quizCharacters() {
         .then(data => {
             var currentCharacter = data.data.results[0];
             var characterName = currentCharacter.name;
-            var image = `${currentCharacter.thumbnail.path}.${currentCharacter.thumbnail.extension}`;
-            displayQuiz(characterName, image);
+            displayQuiz(characterName);
         })
         .catch(error => console.log('Error fetching character:', error));
 };
