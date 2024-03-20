@@ -45,7 +45,7 @@ function quizCharacters() {
         .catch(error => console.log('Error fetching character:', error));
 };
 
-function displayQuiz(characterName, image) {
+function displayQuiz(characterName) {
     var choices = document.getElementById('choices');
     var results = document.getElementById('results');
 
@@ -57,10 +57,11 @@ function displayQuiz(characterName, image) {
     fetch(apiUrl)
     .then(response => response.json())
         .then(data => {
-            var othercharacters = data.data.results;
-            var options = othercharacters.map(character => character.name);
-            options.push(characterName); // Add correct name to options
+            var othercharacters = data.data.results.map(character => character.name);
+            var options = othercharacters.concat(characterName);
             options.sort(() => Math.random() - 0.5);
+
+            options = options.slice(0, 4);
 
             options.forEach(option => {
                 var choiceButtons = document.createElement('button');
