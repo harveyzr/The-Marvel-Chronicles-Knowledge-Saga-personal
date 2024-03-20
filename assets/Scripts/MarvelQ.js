@@ -48,19 +48,23 @@ function quizCharacters() {
         .then(data => {
             var currentCharacter = data.data.results[0];
             var characterName = currentCharacter.name;
+            var characterDescription = currentCharacter.description;
             fetchCharacterImage(currentCharacter, 0);
-            displayQuiz(characterName);
+            displayQuiz(characterName, characterDescription);
             questionCount++; 
         })
         .catch(error => console.log('Error fetching character:', error));
 };
 
-function displayQuiz(characterName) {
+function displayQuiz(characterName, characterDescription) {
+    var descriptionDisplay = document.getElementById('descriptionDisplay');
     var choices = document.getElementById('choices');
     var results = document.getElementById('results');
 
     results.textContent = '';
     choices.innerHTML = '';
+
+    descriptionDisplay.textContent = characterDescription;
 
     var offset = Math.floor(Math.random() * 1490);
 
