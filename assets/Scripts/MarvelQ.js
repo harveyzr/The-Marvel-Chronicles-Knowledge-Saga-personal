@@ -21,7 +21,7 @@ function fetchCharacterImage(character, retryCount) {
             }, retryDelay);
         } else {
             // Display a placeholder image if retries fail
-            imageDisplay.src = './assets/images/placeholder.avif';
+            imageDisplay.src = 'placeholder.avif';
         }
     };
 
@@ -39,18 +39,18 @@ function quizCharacters() {
         .then(data => {
             var currentCharacter = data.data.results[0];
             var characterName = currentCharacter.name;
+            fetchCharacterImage(currentCharacter, 0);
             displayQuiz(characterName);
         })
         .catch(error => console.log('Error fetching character:', error));
 };
 
 function displayQuiz(characterName, image) {
-    var imageDisplay= document.getElementById('imageDisplay');
     var choices = document.getElementById('choices');
     var results = document.getElementById('results');
 
     results.textContent = '';
-    imageDisplay.src = image;
+    choices.innerHTML = '';
 
 
     var apiUrl = `${baseUrl}characters?apikey=${publicKey}&limit=3`;
@@ -58,14 +58,10 @@ function displayQuiz(characterName, image) {
     .then(response => response.json())
         .then(data => {
             var othercharacters = data.data.results;
-            var options = [];
-            othercharacters.forEach(character => {
-                options.push(character.name);
-            });
+            var options = othercharacters.map(character => character.name);
             options.push(characterName); // Add correct name to options
             options.sort(() => Math.random() - 0.5);
 
-            choices.innerHTML = '';
             options.forEach(option => {
                 var choiceButtons = document.createElement('button');
                 choiceButtons.classList.add('choices');
