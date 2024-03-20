@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(../images/flat-design-bright-comics-wallpaper_23-2148799406.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 36px;
+    text-align: center;
+    padding-top: 100px; 
+    background-image: linear-gradient(to right, 
+    red, blue, rgb(6, 174, 183), rgb(189, 14, 189));
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+}
+
+.white-box {
+    background-color: white;
+    width: 80%;
+    margin: 0 auto;
+    height: 80vh;
+    text-align: left;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.gcse-search {
+    text-align: center; 
+}
+
+input.gsc-input {
+    width: 300px; 
+    height: 40px; 
+    font-size: 16px; 
+    border-radius: 20px; 
+}
+
+input.gsc-search-button {
+    height: 40px; 
+    border-radius: 20px; 
+}
