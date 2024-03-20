@@ -21,7 +21,7 @@ function fetchCharacterImage(character, retryCount) {
             }, retryDelay);
         } else {
             // Display a placeholder image if retries fail
-            imageDisplay.src = 'placeholder.avif';
+            imageDisplay.src = 'assets/images/placeholder.avif';
         }
     };
 
@@ -39,7 +39,6 @@ function quizCharacters() {
         .then(data => {
             var currentCharacter = data.data.results[0];
             var characterName = currentCharacter.name;
-            var image = `${currentCharacter.thumbnail.path}.${currentCharacter.thumbnail.extension}`;
             fetchCharacterImage(currentCharacter, 0);
             displayQuiz(characterName);
         })
@@ -58,9 +57,8 @@ function displayQuiz(characterName) {
     fetch(apiUrl)
     .then(response => response.json())
         .then(data => {
-            var otherCharacters = data.data.results;
-            var options = otherCharacters.map(character => character.name);
-            options.push(characterName); 
+            var otherCharacters = data.data.results.map(character => character.name);
+            var options = otherCharacters.concat(characterName);
             options = shuffleArray(options);
             options = options.slice(0, 4);
 
@@ -88,15 +86,11 @@ function shuffleArray(array) {
     }
     return array;
 }
-
-document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('next-btn').addEventListener('click', quizCharacters);
 
 
 // Load a random character when the page loads
 quizCharacters();
 
-
-});
 
 
