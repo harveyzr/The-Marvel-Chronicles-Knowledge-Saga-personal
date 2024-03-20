@@ -47,11 +47,20 @@ function quizCharacters() {
     .then(response => response.json())
         .then(data => {
             var currentCharacter = data.data.results[0];
+
+            var characterWithJPGImage = currentCharacter.find(character => {
+                return character.thumbnail && character.thumbnail.extension.toLowerCase() === 'jpg';
+            });
+
+            if (characterWithJPGImage) {
             var characterName = currentCharacter.name;
             fetchCharacterImage(currentCharacter, 0);
             displayQuiz(characterName);
             questionCount++; 
-        })
+        } else{
+            quizCharacters();
+        }
+    })
         .catch(error => console.log('Error fetching character:', error));
 };
 
