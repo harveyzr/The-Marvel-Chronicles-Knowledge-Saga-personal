@@ -22,6 +22,7 @@ function fetchCharacterImage(character, retryCount) {
         } else {
             // Display a placeholder image if retries fail
             imageDisplay.src = 'assets/images/placeholder.avif';
+            quizCharacters();
         }
     };
 
@@ -52,8 +53,9 @@ function displayQuiz(characterName) {
     results.textContent = '';
     choices.innerHTML = '';
 
-
-    var apiUrl = `${baseUrl}characters?apikey=${publicKey}&limit=3`;
+    var offset = Math.floor(Math.random() * 1490);
+    
+    var apiUrl = `${baseUrl}characters?apikey=${publicKey}&offset=${offset}&limit=3`;
     fetch(apiUrl)
     .then(response => response.json())
         .then(data => {
