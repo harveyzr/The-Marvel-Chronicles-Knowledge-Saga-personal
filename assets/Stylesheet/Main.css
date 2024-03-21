@@ -49,3 +49,10 @@ background-color: darkblue;
 text-align: center;
 font-size: 24px;
 }
+
+.quote {
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
