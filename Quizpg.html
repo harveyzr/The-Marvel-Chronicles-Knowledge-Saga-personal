@@ -5,14 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marvel Quiz</title>
     <link rel="stylesheet" href="assets/Stylesheet/MarvelQ.css">
-    <script src="./assets/Scripts/MarvelQ.js"></script>
 </head>
 <body>
-    <h1>Marvel Quiz</h1>
     <div id="quiz-container">
-        <img id="imageDisplay"/>
-        <div id="choices"></div>
-        <div id="results"></div>
+        <h1>Marvel Quiz</h1>
+        <div class="image-container">
+            <img id="imageDisplay" src="" alt="Character Image"/>
+            <p id="descriptionDisplay">Character Desription: </p>
+        </div>
+        <div class="question-container">
+            <div id="choices"></div>
+            <div id="results"></div>
+        </div>
         <button id="next-btn">Next</button>
         
         <!--this code below is the search engine-->
