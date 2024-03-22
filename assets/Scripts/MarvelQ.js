@@ -85,8 +85,10 @@ function displayQuiz(characterName, characterDescription) {
                 if (option === characterName) {
                     results.textContent = 'Correct!';
                     score++;
+                    quizCharacters();
                 } else {
                     results.textContent = 'Incorrect. Try again!';
+                    score--;
                 }
             };
             choices.appendChild(choiceButtons);
@@ -107,9 +109,6 @@ function endQuiz() {
     var quizContainer = document.getElementById('quiz-container');
     quizContainer.innerHTML = `<h2>Quiz ended</h2><p>Your score: ${score}</p>`;
 }
-
-    document.getElementById('next-btn').addEventListener('click', quizCharacters);
-
 
 // Load a random character when the page loads
 quizCharacters();
