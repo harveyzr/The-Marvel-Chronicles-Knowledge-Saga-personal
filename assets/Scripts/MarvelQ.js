@@ -55,7 +55,6 @@ function quizCharacters() {
         .then(data => {
             var currentCharacter = data.data.results[0];
             var characterName = currentCharacter.name;
-            var characterDescription = currentCharacter.description;
 
             if (!isPlaceholderImage(currentCharacter.thumbnail)) {
                 fetchCharacterImage(currentCharacter, 0);
@@ -69,14 +68,12 @@ function quizCharacters() {
 };
 
 function displayQuiz(characterName, characterDescription) {
-    var descriptionDisplay = document.getElementById('descriptionDisplay');
     var choices = document.getElementById('choices');
     var results = document.getElementById('results');
 
     results.textContent = '';
     choices.innerHTML = '';
 
-    descriptionDisplay.textContent = characterDescription;
 
     var offset = Math.floor(Math.random() * 1490);
 
