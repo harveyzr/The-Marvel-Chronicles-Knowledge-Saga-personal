@@ -8,6 +8,13 @@ function fetchCharacterImage(character, retryCount) {
     var imageDisplay = document.getElementById('imageDisplay');
     imageDisplay.src = '';
 
+    // Check if the image URL contains "image_not_available"
+    if (image.includes("image_not_available")) {
+        // Display a placeholder image
+        imageDisplay.src = 'assets/images/placeholder.avif';
+        return; // Exit the function
+    }
+
     // Create an image element to pre-load the image and check for errors
     var tempImage = new Image();
     tempImage.onload = function() {
