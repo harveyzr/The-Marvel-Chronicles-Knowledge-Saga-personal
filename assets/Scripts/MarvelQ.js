@@ -58,7 +58,7 @@ function quizCharacters() {
 
             if (!isPlaceholderImage(currentCharacter.thumbnail)) {
                 fetchCharacterImage(currentCharacter, 0);
-                displayQuiz(characterName, characterDescription);
+                displayQuiz(characterName);
                 questionCount++; 
         }else{
             quizCharacters();
@@ -143,6 +143,7 @@ function endQuiz() {
         choices.innerHTML = '';
     }
 
+} 
 
 
 // Load a random character when the page loads
