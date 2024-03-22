@@ -56,10 +56,15 @@ function quizCharacters() {
             var currentCharacter = data.data.results[0];
             var characterName = currentCharacter.name;
             var characterDescription = currentCharacter.description;
-            fetchCharacterImage(currentCharacter, 0);
-            displayQuiz(characterName, characterDescription);
-            questionCount++; 
-        })
+
+            if (!isPlaceholderImage(currentCharacter.thumbnail)) {
+                fetchCharacterImage(currentCharacter, 0);
+                displayQuiz(characterName, characterDescription);
+                questionCount++; 
+        }else{
+            quizCharacters();
+        }
+    })
         .catch(error => console.log('Error fetching character:', error));
 };
 
@@ -110,6 +115,10 @@ function shuffleArray(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
+}
+
+function isPlaceholderImage(thumbnail) {
+    return thumbnail.path.includes("image_not_available") || thumbnail.path.includes("placeholder");
 }
 
 function endQuiz() {
