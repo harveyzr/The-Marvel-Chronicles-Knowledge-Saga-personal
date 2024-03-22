@@ -1,4 +1,4 @@
-var publicKey = '7a37b3eaf07d860af95d83da6acd6d1cbb9a9574';
+var publicKey = '8d2bc57ce15d6a17eeca97819795c187';
 var baseUrl = 'https://gateway.marvel.com/v1/public/';
 var score = 0;
 var questionCount = 0;
