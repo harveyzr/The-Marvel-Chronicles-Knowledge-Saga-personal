@@ -8,6 +8,13 @@ function fetchCharacterImage(character, retryCount) {
     var imageDisplay = document.getElementById('imageDisplay');
     imageDisplay.src = '';
 
+    // Check if the image URL contains "image_not_available"
+    if (image.includes("image_not_available")) {
+        // Display a placeholder image
+        imageDisplay.src = 'assets/images/placeholder.avif';
+        return; // Exit the function
+    }
+
     // Create an image element to pre-load the image and check for errors
     var tempImage = new Image();
     tempImage.onload = function() {
@@ -48,23 +55,25 @@ function quizCharacters() {
         .then(data => {
             var currentCharacter = data.data.results[0];
             var characterName = currentCharacter.name;
-            var characterDescription = currentCharacter.description;
-            fetchCharacterImage(currentCharacter, 0);
-            displayQuiz(characterName, characterDescription);
-            questionCount++; 
-        })
+
+            if (!isPlaceholderImage(currentCharacter.thumbnail)) {
+                fetchCharacterImage(currentCharacter, 0);
+                displayQuiz(characterName, characterDescription);
+                questionCount++; 
+        }else{
+            quizCharacters();
+        }
+    })
         .catch(error => console.log('Error fetching character:', error));
 };
 
 function displayQuiz(characterName, characterDescription) {
-    var descriptionDisplay = document.getElementById('descriptionDisplay');
     var choices = document.getElementById('choices');
     var results = document.getElementById('results');
 
     results.textContent = '';
     choices.innerHTML = '';
 
-    descriptionDisplay.textContent = characterDescription;
 
     var offset = Math.floor(Math.random() * 1490);
 
@@ -85,8 +94,10 @@ function displayQuiz(characterName, characterDescription) {
                 if (option === characterName) {
                     results.textContent = 'Correct!';
                     score++;
+                    quizCharacters();
                 } else {
                     results.textContent = 'Incorrect. Try again!';
+                    score--;
                 }
             };
             choices.appendChild(choiceButtons);
@@ -103,12 +114,35 @@ function shuffleArray(array) {
     return array;
 }
 
+function isPlaceholderImage(thumbnail) {
+    return thumbnail.path.includes("image_not_available") || thumbnail.path.includes("placeholder");
+}
+
 function endQuiz() {
     var quizContainer = document.getElementById('quiz-container');
-    quizContainer.innerHTML = `<h2>Quiz ended</h2><p>Your score: ${score}</p>`;
+    quizContainer.innerHTML = `<h2>Quiz ended</h2><p>Your score: ${score}</p><button id="restart-btn">Restart Quiz</button>`;   
+
+    document.getElementById('restart-btn').addEventListener('click', restartQuiz);
+
 }
 
     document.getElementById('next-btn').addEventListener('click', quizCharacters);
+
+    function restartQuiz() {
+        // Reset score and question count
+    score = 0;
+    questionCount = 0;
+
+    // clear or reset other elements like results or choices
+    var results = document.getElementById('results');
+    if (results) {
+        results.textContent = '';
+    }
+    var choices = document.getElementById('choices');
+    if (choices) {
+        choices.innerHTML = '';
+    }
+
 
 
 // Load a random character when the page loads
