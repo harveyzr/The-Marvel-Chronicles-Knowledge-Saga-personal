@@ -136,6 +136,11 @@ function displayHighScores() {
     document.getElementById('quiz-container').innerHTML += highScoresHtml;
 }
 
+function restartQuiz() {
+    score = 0; // Reset the score
+    questionCount = 0; // Reset the question count
+    quizCharacters(); // Start the quiz again
+}
 
 
 function isPlaceholderImage(thumbnail) {
@@ -147,7 +152,11 @@ function endQuiz() {
     var name = prompt("Enter your name for the high score table:", "Your Name Here");
     saveHighScore(name, score);
     quizContainer.innerHTML = `<h2>Quiz ended</h2><p>Your score: ${score}</p>`;
+    quizContainer.innerHTML += `<buttton id="restart-button">Restart Quiz</button>`;
     displayHighScores();
+
+    document.getElementById('restart-button').addEventListener('click', restartQuiz);
+
 }
 
 
