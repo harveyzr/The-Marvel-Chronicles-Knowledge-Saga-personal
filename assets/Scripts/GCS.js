@@ -1,28 +1,11 @@
-const btnback = document.getElementById('btnback');
-const modal = document.getElementById('modal');
-const acptbtn = document.getElementById('acptbtn');
+  const backButton = document.getElementById('btnback');
+  const modal = document.getElementById('modal');
+  const acceptButton = document.getElementById('acptbtn');
 
-btnback.addEventListener('click', () => {
-    modal.style.display = 'block';
-  });
-
-acptbtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-    
-    window.location.href = 'index.html';
+  backButton.addEventListener('click', () => {
+      modal.style.display = 'block';
   });
 
-  const quizButton = document.getElementById('quizButton');
-  const modals = document.getElementById('modal-1');
-  const proceed = document.getElementById('proceed');
-  
-  quizButton.addEventListener('click', () => {
-      modals.style.display = 'block';
+  acceptButton.addEventListener('click', () => {
+      window.location.href = 'index.html';
   });
-  
-  proceed.addEventListener('click', () => {
-      modals.style.display = 'none';
-      
-      window.location.href = 'Quizpg.html';
-  });
-  
