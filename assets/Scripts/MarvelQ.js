@@ -148,8 +148,10 @@ function endQuiz() {
     saveHighScore(name, score);
     quizContainer.innerHTML = `<h2>Quiz ended</h2><p>Your score: ${score}</p>`;
     displayHighScores();
-}
-
+}do {
+    
+    
+} while (condition);
     quizContainer.innerHTML = `<h2>Quiz ended</h2><p>Your score: ${score}</p>`; 
 // Load a random character when the page loads
 quizCharacters();
