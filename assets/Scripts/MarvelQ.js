@@ -154,10 +154,8 @@ function endQuiz() {
     quizContainer.innerHTML = `<h2>Quiz ended</h2><p>Your score: ${score}</p>`;
     quizContainer.innerHTML += `<button id="restart-button">Restart Quiz</button>`;
     displayHighScores();
-
-    document.getElementById('restart-button').addEventListener('click', restartQuiz);
-
 }
+document.getElementById('restart-button').addEventListener('click', restartQuiz);
 
 
 // Load a random character when the page loads
