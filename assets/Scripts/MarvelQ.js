@@ -105,32 +105,11 @@ function shuffleArray(array) {
 
 function endQuiz() {
     var quizContainer = document.getElementById('quiz-container');
-    quizContainer.innerHTML = `<h2>Quiz ended</h2><p>Your score: ${score}</p><button id="restart-btn">Restart Quiz</button>`;   
-
-    document.getElementById('restart-btn').addEventListener('click', restartQuiz);
-
+    quizContainer.innerHTML = `<h2>Quiz ended</h2><p>Your score: ${score}</p>`; 
 }
-
-    document.getElementById('next-btn').addEventListener('click', quizCharacters);
-
-    function restartQuiz() {
-        // Reset score and question count
-    score = 0;
-    questionCount = 0;
-
-    // clear or reset other elements like results or choices
-    var results = document.getElementById('results');
-    if (results) {
-        results.textContent = '';
-    }
-    var choices = document.getElementById('choices');
-    if (choices) {
-        choices.innerHTML = '';
-    }
-
-
 // Load a random character when the page loads
 quizCharacters();
+
 
 
 
