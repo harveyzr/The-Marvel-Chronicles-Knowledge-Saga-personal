@@ -114,14 +114,43 @@ function shuffleArray(array) {
     return array;
 }
 
+function saveHighScore(name, score) {
+    let highScores = localStorage.getItem('highScores') ? JSON.parse(localStorage.getItem('highScores')) : [];
+    highScores.push({ name, score });
+    highScores.sort((a, b) => b.score - a.score); // Sort scores in descending order
+    highScores = highScores.slice(0, 10); // Keep only top 10 scores
+    localStorage.setItem('highScores', JSON.stringify(highScores));
+}
+
+function getHighScores() {
+    return localStorage.getItem('highScores') ? JSON.parse(localStorage.getItem('highScores')) : [];
+}
+
+function displayHighScores() {
+    var highScores = getHighScores();
+    var highScoresHtml = '<h3>High Scores</h3><ul>';
+    highScores.forEach(score => {
+        highScoresHtml += `<li>${score.name} - ${score.score}</li>`;
+    });
+    highScoresHtml += '</ul>';
+    document.getElementById('quiz-container').innerHTML += highScoresHtml;
+}
+
+
+
 function isPlaceholderImage(thumbnail) {
     return thumbnail.path.includes("image_not_available") || thumbnail.path.includes("placeholder");
 }
 
 function endQuiz() {
     var quizContainer = document.getElementById('quiz-container');
-    quizContainer.innerHTML = `<h2>Quiz ended</h2><p>Your score: ${score}</p>`; 
+    var name = prompt("Enter your name for the high score table:", "Your Name Here");
+    saveHighScore(name, score);
+    quizContainer.innerHTML = `<h2>Quiz ended</h2><p>Your score: ${score}</p>`;
+    displayHighScores();
 }
+
+    quizContainer.innerHTML = `<h2>Quiz ended</h2><p>Your score: ${score}</p>`; 
 // Load a random character when the page loads
 quizCharacters();
 
