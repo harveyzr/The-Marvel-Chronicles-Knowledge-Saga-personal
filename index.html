@@ -5,24 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Marvel Chronicles: Knowledge Saga</title>
     <link rel="stylesheet" href="./assets/Stylesheet/Main.css">
-    <script src="./assets/Scripts/GCS.js"></script>
+    
     <script async src="./assets/Scripts/MarvelQ.js"></script>
 </head>
 <body>
-    
     <h1>The Marvel Chronicles: Knowledge Saga</h1>
     <div class="white-box">
-        <div class="intro">Within the walls of the Cosmos there is intrugie and awe at all the Universes has to offer. However here is where that knowledge is tested and questioned, need to know, already know, will eventually know.</div>
-        <!--this code below is the search engine-->
-        <script async src="https://cse.google.com/cse.js?cx=d6ae88d426d9d40ab"></script>
-        <!--this code below should indicate that this is a search box only and results will display on the result page-->
-        <div class="gcse-search" data-resultsUrl="https://masonmanshark4.github.io/The-Marvel-Chronicles-Knowledge-Saga/Resultpg.html?#gsc.tab=0"></div>
-        <!--this code ^ should indicate that this is a search box only and results will display on the result page-->
         <div class="quote">"The greatest power on Earth is the magnificent power we all of us possess... the power of the human brain!'" -Charles Xavier/Professor X</div>
-    <form action="Quizpg.html">
-        <button type="submit" id="quizButton">Test Your Knowledge</button>
-    </form>
-
-</div>
+        <!--this code below is the search engine-->
+        <script async src="https://cse.google.com/cse.js?cx=d6ae88d426d9d40ab">
+        </script>
+        <div class="gcse-search"></div>
+        
+        <button id="quizButton" class="acknowledgment">Test Your Knowledge</button>
+            
+            <div id="modal-1" class="ak-modal">
+                <div class="modal-content">
+                    <p>The quiz you are about to take is a multiple choice character quiz. Correct answers are +1 to your score. wrong answers are -1 for each one until you get the right answer. You can get multiple wrong answers, so be carful with you choices. Current max score of 10.</p>
+                    <button id="proceed" class="button">Proceed</button>
+                </div>
+            </div>
+    </div>
+<script src="./assets/Scripts/Modal.js"></script>
 </body>
 </html>
