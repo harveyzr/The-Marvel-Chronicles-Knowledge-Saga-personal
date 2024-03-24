@@ -10,13 +10,12 @@ body {
 
 h1 {
     font-size: 36px;
-    text-align: center;
-    padding-top: 100px; 
-    background-color: linear-gradient(to right, 
-    red, blue, rgb(6, 174, 183), rgb(189, 14, 189));
--webkit-background-clip: text;
-background-clip: text;
-color: transparent;
+    text-align: center; 
+    background-color: black;
+    color: white;
+    padding: 0 10px; 
+    display: inline-block;
+    margin-left: 30%;
 }
 
 input[type="text"] {
