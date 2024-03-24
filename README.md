@@ -2,18 +2,22 @@
 
 
 ## Table of Contents
-[Description](#description)
-[Introduction](#introduction)
-[Usage](#usage)
-[Instalation](#instalation)
-[Credits](#credits)
-[Licenses](#licenses)
+- [Description](#description)
+- [Introduction](#introduction)
+- [Features](#features)
+- [Usage](#usage)
+- [Instalation](#instalation)
+- [Credits](#credits)
+- [Licenses](#licenses)
+- [Images](#images)
+- [Link To Deployed Webpage](#link-to-deployed-webpage)
+- [Link to GitHub Pages ](#link-to-gethub-website)
 
 ## Description
 Using the Google Search Engine, Marvel Character Generator and Marvel Quiz API we have made a dual purpose site meant to allow users to search for and quiz themselves on Marvel knowledge. This project is a accumulation of our abilities, knowledge and teamwork to which we put to practice here in The Marvel Chronicles: Knowledge Saga. Here is a Preview before launch version 0.0.1: 
 ![Pre-launch Preview]
 
-The launched site:  
+The launched site:  https://masonmanshark4.github.io/The-Marvel-Chronicles-Knowledge-Saga/
 
 ## Introduction
 The idea of a quiz with a search bar came up when we were presented with the list of potential API usable for the project. The team collectively liked the idea of using Marvels APIs and with there own quiz API it was decided. It wasn't hard to pick a good second that would make sense and work well. Google's Progammable Search Engine made it straight forward on implementing that it paried well with the theme.
@@ -32,4 +36,13 @@ Credit to my teacher and assistant teacher, Mr. Ragheed and Mr. Torres, for givi
 
 ## Licenses
 Please refer to License in repo.
+
+ ## Images
+![Website Preview](assets/images/Marvel%20rocks.gif)
+
+ ## Link to Deployed Webpage
+https://masonmanshark4.github.io/The-Marvel-Chronicles-Knowledge-Saga/
+ 
+## Link to GetHub Website
+https://github.com/Masonmanshark4/The-Marvel-Chronicles-Knowledge-Saga
 
