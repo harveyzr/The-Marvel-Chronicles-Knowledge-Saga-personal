@@ -14,8 +14,7 @@
 - [Link to GitHub Pages ](#link-to-gethub-website)
 
 ## Description
-Using the Google Search Engine, Marvel Character Generator and Marvel Quiz API we have made a dual purpose site meant to allow users to search for and quiz themselves on Marvel knowledge. This project is a accumulation of our abilities, knowledge and teamwork to which we put to practice here in The Marvel Chronicles: Knowledge Saga. Here is a Preview before launch version 0.0.1: 
-![Pre-launch Preview]
+Using the Google Search Engine, Marvel Character Generator and Marvel Quiz API we have made a dual purpose site meant to allow users to search for and quiz themselves on Marvel knowledge. This project is a accumulation of our abilities, knowledge and teamwork to which we put to practice here in The Marvel Chronicles: Knowledge Saga. 
 
 The launched site:  https://masonmanshark4.github.io/The-Marvel-Chronicles-Knowledge-Saga/
 
