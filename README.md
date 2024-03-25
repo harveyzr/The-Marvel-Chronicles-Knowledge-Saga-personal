@@ -6,7 +6,7 @@
 - [Introduction](#introduction)
 - [Features](#features)
 - [Usage](#usage)
-- [Instalation](#instalation)
+- [Installation](#installation)
 - [Credits](#credits)
 - [Licenses](#licenses)
 - [Images](#images)
