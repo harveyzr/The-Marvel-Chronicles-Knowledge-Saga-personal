@@ -138,7 +138,12 @@ function displayHighScores() {
 function isPlaceholderImage(thumbnail) {
     return thumbnail.path.includes("image_not_available") || thumbnail.path.includes("placeholder");
 }
-restartButton.addEventListener('click', quizCharacters);
+
+function restartQuiz() {
+    score = 0; // Reset the score
+    questionCount = 0; // Reset the question count
+    quizCharacters(); // Start the quiz again
+}
 
 function endQuiz() {
     var quizContainer = document.getElementById('quiz-container');
@@ -149,19 +154,13 @@ function endQuiz() {
     var restartButton = document.createElement('button');
     restartButton.id = 'restart-button';
     restartButton.textContent = 'Restart Quiz';
-    restartButton.addEventListener('click', quizCharacters);
+    restartButton.addEventListener('click', restartQuiz);
 
     quizContainer.appendChild(restartButton);
 
     displayHighScores();
 }
 
-restartButton.addEventListener('click', quizCharacters);
-function restartQuiz() {
-    score = 0; // Reset the score
-    questionCount = 0; // Reset the question count
-    quizCharacters(); // Start the quiz again
-}
 
 
 // Load a random character when the page loads
