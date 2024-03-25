@@ -146,7 +146,6 @@ function restartQuiz() {
 }
 
 function endQuiz() {
-    restartButton.addEventListener('click', restartQuiz);
     var quizContainer = document.getElementById('quiz-container');
     var name = prompt("Enter your name for the high score table:", "Your Name Here");
     saveHighScore(name, score);
@@ -155,9 +154,10 @@ function endQuiz() {
     var restartButton = document.createElement('button');
     restartButton.id = 'restart-button';
     restartButton.textContent = 'Restart Quiz';
+    quizContainer.appendChild(restartButton);
+
     restartButton.addEventListener('click', restartQuiz);
 
-    quizContainer.appendChild(restartButton);
 
     displayHighScores();
 }
