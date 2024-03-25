@@ -196,6 +196,9 @@ function restartQuiz() {
         quizContainer.innerHTML = '';
     }
 
+    document.getElementById("restartQuiz").classList.add("hiddenElement"); // Hide the restart button again
+    document.getElementById("clearHighScores").classList.add("hiddenElement"); // Hide the clear high scores button again
+
     quizCharacters(); // Start the quiz again
 }
 
@@ -218,7 +221,10 @@ function endQuiz() {
 
 function clearHighScores() {
     localStorage.removeItem('highScores');
-    quizContainer.innerHTML = `<h2>Quiz ended</h2><p>Your score: ${score}</p>`;
+    var highScoresContainer = document.getElementById('highScores');
+    if (highScoresContainer) {
+        highScoresContainer.innerHTML = ''; // Clear the displayed high scores
+    }
     displayHighScores();
 }
 
