@@ -190,6 +190,12 @@ function isPlaceholderImage(thumbnail) {
 function restartQuiz() {
     score = 0; // Reset the score
     questionCount = 0; // Reset the question count
+
+    var quizContainer = document.getElementById('quiz-container');
+    if (quizContainer) {
+        quizContainer.innerHTML = '';
+    }
+
     quizCharacters(); // Start the quiz again
 }
 
@@ -212,6 +218,7 @@ function endQuiz() {
 
 function clearHighScores() {
     localStorage.removeItem('highScores');
+    quizContainer.innerHTML = `<h2>Quiz ended</h2><p>Your score: ${score}</p>`;
     displayHighScores();
 }
 
