@@ -221,10 +221,8 @@ function endQuiz() {
 
 function clearHighScores() {
     localStorage.removeItem('highScores');
-    var highScoresContainer = document.getElementById('highScores');
-    if (highScoresContainer) {
-        highScoresContainer.innerHTML = ''; // Clear the displayed high scores
-    }
+    highScoresHtml.innerHTML = ''; // Clear the displayed high scores
+
     displayHighScores();
 }
 
