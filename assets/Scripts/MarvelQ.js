@@ -140,12 +140,14 @@ function isPlaceholderImage(thumbnail) {
 }
 
 function restartQuiz() {
+    console.log("restarting quiz");
     score = 0; // Reset the score
     questionCount = 0; // Reset the question count
     quizCharacters(); // Start the quiz again
 }
 
 function endQuiz() {
+    console.log("ending quiz");
     var quizContainer = document.getElementById('quiz-container');
     var name = prompt("Enter your name for the high score table:", "Your Name Here");
     saveHighScore(name, score);
@@ -156,13 +158,13 @@ function endQuiz() {
     restartButton.textContent = 'Restart Quiz';
     quizContainer.appendChild(restartButton);
 
-    restartButton.addEventListener('click', restartQuiz);
-
-
+    restartButton.addEventListener('click', function() {
+        console.log("Restart button clicked."); // Log when the restart button is clicked
+        restartQuiz();
+     });
     displayHighScores();
-}
 
-console.log(endQuiz);
+}
 
 // Load a random character when the page loads
 quizCharacters();
