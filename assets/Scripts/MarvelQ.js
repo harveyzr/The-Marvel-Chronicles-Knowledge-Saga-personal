@@ -1,5 +1,5 @@
 // Define constants and variables
-var publicKey = '8d2bc57ce15d6a17eeca97819795c187';
+var publicKey = '319ffe5f11ca79ea417565bba90881bf';
 var baseUrl = 'https://gateway.marvel.com/v1/public/';
 var score = 0;
 var questionCount = 0;
