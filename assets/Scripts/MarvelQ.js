@@ -138,6 +138,7 @@ function displayHighScores() {
 function isPlaceholderImage(thumbnail) {
     return thumbnail.path.includes("image_not_available") || thumbnail.path.includes("placeholder");
 }
+restartButton.addEventListener('click', quizCharacters);
 
 function endQuiz() {
     var quizContainer = document.getElementById('quiz-container');
@@ -155,7 +156,7 @@ function endQuiz() {
     displayHighScores();
 }
 
-
+restartButton.addEventListener('click', quizCharacters);
 function restartQuiz() {
     score = 0; // Reset the score
     questionCount = 0; // Reset the question count
