@@ -191,15 +191,7 @@ function restartQuiz() {
     score = 0; // Reset the score
     questionCount = 0; // Reset the question count
 
-    var quizContainer = document.getElementById('quiz-container');
-    if (quizContainer) {
-        quizContainer.innerHTML = '';
-    }
-
-    document.getElementById("restartQuiz").classList.add("hiddenElement"); // Hide the restart button again
-    document.getElementById("clearHighScores").classList.add("hiddenElement"); // Hide the clear high scores button again
-
-    quizCharacters(); // Start the quiz again
+    window.location.reload();
 }
 
 // Function to end the quiz
@@ -221,7 +213,11 @@ function endQuiz() {
 
 function clearHighScores() {
     localStorage.removeItem('highScores');
-    highScoresHtml.innerHTML = ''; // Clear the displayed high scores
+    
+    var quizContainer = document.getElementById('quiz-container');
+    if (quizContainer) {
+        quizContainer.innerHTML = ''; // Clear the quiz container's content
+    }
 
     displayHighScores();
 }
