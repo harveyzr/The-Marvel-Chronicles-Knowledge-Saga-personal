@@ -45,8 +45,16 @@ function fetchCharacterImage(character, retryCount) {
 // Function to quiz characters
 function quizCharacters() {
 
-    document.getElementById("restartQuiz").classList.add("hiddenElement");
-    document.getElementById("clearHighScores").classList.add("hiddenElement");
+    var restartQuizButton = document.getElementById("restartQuiz");
+    var clearHighScoresButton = document.getElementById("clearHighScores");
+
+    if (restartQuizButton !== null && restartQuizButton !== undefined) {
+        restartQuizButton.classList.add("hiddenElement");
+    }
+    
+    if (clearHighScoresButton !== null && clearHighScoresButton !== undefined) {
+        clearHighScoresButton.classList.add("hiddenElement");
+    }
   
     if (questionCount >= 10) {
         endQuiz();
