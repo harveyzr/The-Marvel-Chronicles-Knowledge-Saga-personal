@@ -216,13 +216,12 @@ function clearHighScores() {
     
     var quizContainer = document.getElementById('quiz-container');
     if (quizContainer) {
-        quizContainer.innerHTML = ''; // Clear the quiz container's content
+        document.getElementById('quiz-container').innerHTML += highScoresHtml; 
     }
 
-    displayHighScores();
 }
 
-document.getElementById("restartQuiz").addEventListener("click", restartQuiz);
+document.getElementById("restartQuiz").addEventListener("click", window.location.reload());
 document.getElementById("clearHighScores").addEventListener("click", clearHighScores);
 
 // Load a random character when the page loads
