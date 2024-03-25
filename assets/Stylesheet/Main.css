@@ -44,7 +44,7 @@ button[type="submit"]:hover {
 .white-box {
 width:80%;
 margin: 0 auto;
-height: 80vh;
+height: 86vh;
 background-color: darkblue;
 text-align: center;
 font-size: 24px;
@@ -69,4 +69,9 @@ font-size: 24px;
     width: 80%;
     text-align: center;
     color: black;
+}
+
+.search-container{
+    max-height: 100px;
+    overflow-y: auto; 
 }

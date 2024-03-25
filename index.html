@@ -11,21 +11,30 @@
 </head>
 <body>
     <h1>The Marvel Chronicles: Knowledge Saga</h1>
-    <div class="white-box">
-        <div class="quote">"The greatest power on Earth is the magnificent power we all of us possess... the power of the human brain!'" -Charles Xavier/Professor X</div>
+    <div class="white-box columns">
+        <div class="quote column">
+            <p class="is-size-5 has-text-centered ">"The greatest power on Earth is the magnificent power we all of us possess... the power of the human brain!'" -Charles Xavier/Professor X</p>
+            </div>
+        <div class="column">
+            <p class="is-size-7 has-text-centered ">Need to search for information? Feel free with the below search bar!</p>
         <!--this code below is the search engine-->
-        <script async src="https://cse.google.com/cse.js?cx=d6ae88d426d9d40ab">
-        </script>
+            <div class="search-container">
+            <script async src="https://cse.google.com/cse.js?cx=d6ae88d426d9d40ab">
+            </script>
+            </div>
+        </div>
         <div class="gcse-search"></div>
-        
-        <button id="quizButton" class="acknowledgment">Test Your Knowledge</button>
-          <!--This is a modal for explaining the quiz this links to-->  
+        <div class="column">
+            <p class="is-size-7 has-text-centered ">Want to test your Knowledge? Try our Marvel Quiz below!</p>
+            <button id="quizButton" class="acknowledgment">Test Your Knowledge</button>
+            <!--This is a modal for explaining the quiz this links to-->  
             <div id="modal-1" class="ak-modal">
                 <div class="modal-content">
                     <p>The quiz you are about to take is a multiple choice character quiz. Correct answers are +1 to your score. wrong answers are -1 for each one until you get the right answer. You can get multiple wrong answers, so be careful with you choices. Current max score of 10.</p>
                     <button id="proceed" class="button">Proceed</button>
                 </div>
             </div>
+        </div>
     </div>
 <script src="./assets/Scripts/Modal.js"></script>
 </body>
