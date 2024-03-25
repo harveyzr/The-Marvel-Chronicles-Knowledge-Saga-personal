@@ -44,7 +44,10 @@ function fetchCharacterImage(character, retryCount) {
 
 // Function to quiz characters
 function quizCharacters() {
-    // Check if the quiz has ended
+
+    document.getElementById("restartQuizBtn").classList.add("hidden");
+    document.getElementById("clearHighScoresBtn").classList.add("hidden");
+  
     if (questionCount >= 10) {
         endQuiz();
         return; // Exit the function if the quiz has ended
@@ -172,6 +175,9 @@ function restartQuiz() {
     score = 0; // Reset the score
     questionCount = 0; // Reset the question count
     quizCharacters(); // Start the quiz again
+
+    document.getElementById("restartQuizBtn").classList.add("hidden");
+    document.getElementById("clearHighScoresBtn").classList.add("hidden");
 }
 
 // Function to end the quiz
@@ -186,7 +192,18 @@ function endQuiz() {
    
     // Display the high scores
     displayHighScores();
+
+    document.getElementById("restartQuizBtn").classList.remove("hidden");
+    document.getElementById("clearHighScoresBtn").classList.remove("hidden");
 }
+
+function clearHighScores() {
+    localStorage.removeItem('highScores');
+    displayHighScores();
+}
+
+document.getElementById("restartQuiz").addEventListener("click", restartQuiz);
+document.getElementById("clearHighScores").addEventListener("click", clearHighScores);
 
 // Load a random character when the page loads
 quizCharacters();
