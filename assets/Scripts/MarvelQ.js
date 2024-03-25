@@ -39,12 +39,6 @@ function fetchCharacterImage(character, retryCount) {
     tempImage.src = image;
 }
 
-function updateProgressBar() {
-    var progressBar = document.getElementById("progressBar");
-    if (progressBar) {
-        progressBar.value += 10;
-    }
-}
 
 function quizCharacters() {
 
@@ -66,7 +60,6 @@ function quizCharacters() {
                 fetchCharacterImage(currentCharacter, 0);
                 displayQuiz(characterName);
                 questionCount++; 
-                updateProgressBar();
         }else{
             quizCharacters();
         }
@@ -135,14 +128,21 @@ function getHighScores() {
 
 function displayHighScores() {
     var highScores = getHighScores();
-    var highScoresHtml = '<h3>High Scores</h3><ul>';
+    var highScoresPanel = document.getElementById('highScoresPanel');
+    highScoresPanel.innerHTML = '<p class="panel-heading">High Scores</p>';
     highScores.forEach(score => {
-        highScoresHtml += `<li>${score.name} : ${score.score}</li>`;
+        highScoresPanel.innerHTML += `<a class="panel-block">${score.name} : ${score.score}</a>`;
     });
-    highScoresHtml += '</ul>';
-    document.getElementById('quiz-container').innerHTML += highScoresHtml;
 }
 
+function resetHighScores() {
+    localStorage.removeItem('highScores');
+    displayHighScores(); // Update the display
+}
+
+document.getElementById('resetHighScores').addEventListener('click', resetHighScores);
+
+    
 function isPlaceholderImage(thumbnail) {
     return thumbnail.path.includes("image_not_available") || thumbnail.path.includes("placeholder");
 }
@@ -163,8 +163,10 @@ function endQuiz() {
 }
 
 
+
 // Load a random character when the page loads
 quizCharacters();
+displayHighScores();
 
 
 
