@@ -130,44 +130,17 @@ function displayHighScores() {
     var highScores = getHighScores();
     var highScoresHtml = '<h3>High Scores</h3><ul>';
     highScores.forEach(score => {
-        highScoresHtml += `<li>${score.name} - ${score.score}</li>`;
+        highScoresHtml += `<li>${score.name} : ${score.score}</li>`;
     });
     highScoresHtml += '</ul>';
     document.getElementById('quiz-container').innerHTML += highScoresHtml;
-    setupKeyboardShortcuts();
 }
-function isPlaceholderImage(thumbnail) {
-    return thumbnail.path.includes("image_not_available") || thumbnail.path.includes("placeholder");
-}
-
-function setupKeyboardShortcut() {
-    document.addEventListener('keydown', function(event) {
-        if (event.code === 'KeyR') {
-            console.log('R key pressed, restarting quiz...');
-            restartQuiz();
-        }
-    });
-}
-
-// Call this function once to set up the keyboard shortcut.
-setupKeyboardShortcut();
-
-function restartQuiz() {
-    score = 0; // Reset the score
-    questionCount = 0; // Reset the question count
-    quizCharacters(); // Start the quiz again
-}
-
-// The rest of your code remains unchanged
-
 
 function endQuiz() {
     var quizContainer = document.getElementById('quiz-container');
     var name = prompt("Enter your name for the high score table:", "Your Name Here");
     saveHighScore(name, score);
     quizContainer.innerHTML = `<h2>Quiz ended</h2><p>Your score: ${score}</p>`;
-
-
 
     displayHighScores();
 }
