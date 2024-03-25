@@ -42,6 +42,13 @@ function fetchCharacterImage(character, retryCount) {
     tempImage.src = image;
 }
 
+function updateProgressBar() {
+    var progressBar = document.getElementById("progressBar");
+    if (progressBar) {
+        progressBar.value += 10;
+    }
+}
+
 // Function to quiz characters
 function quizCharacters() {
 
@@ -51,7 +58,7 @@ function quizCharacters() {
     if (restartQuizButton !== null && restartQuizButton !== undefined) {
         restartQuizButton.classList.add("hiddenElement");
     }
-    
+
     if (clearHighScoresButton !== null && clearHighScoresButton !== undefined) {
         clearHighScoresButton.classList.add("hiddenElement");
     }
@@ -77,6 +84,7 @@ function quizCharacters() {
                 fetchCharacterImage(currentCharacter, 0);
                 displayQuiz(characterName);
                 questionCount++; 
+                updateProgressBar();
         }else{
             // If the character doesn't have a valid image, fetch another character
             quizCharacters();
@@ -207,7 +215,7 @@ function endQuiz() {
 
 function clearHighScores() {
     localStorage.removeItem('highScores');
-    displayHighScores();
+    document.getElementById('quiz-container').innerHTML = '';
 }
 
 document.getElementById("restartQuiz").addEventListener("click", restartQuiz);
