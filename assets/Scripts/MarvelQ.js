@@ -134,6 +134,7 @@ function displayHighScores() {
     });
     highScoresHtml += '</ul>';
     document.getElementById('quiz-container').innerHTML += highScoresHtml;
+    setupKeyboardShortcuts();
 }
 function isPlaceholderImage(thumbnail) {
     return thumbnail.path.includes("image_not_available") || thumbnail.path.includes("placeholder");
