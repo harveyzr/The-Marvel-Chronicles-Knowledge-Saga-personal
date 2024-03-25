@@ -4,31 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marvel Quiz</title>
-    <!-- Correct the Bulma CSS link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/npm/Bulma@0.9.1/css/Bulma.min.css">
     <link rel="stylesheet" href="assets/Stylesheet/MarvelQ.css">
 </head>
 <body>
-    <section class="section">
-        <div class="container" id="quiz-container">
-            <progress class="progress is-info" value="0" max="100">15%</progress>
-            <h1 class="title">Marvel Quiz</h1>
-            <div class="image-container">
-                <img id="imageDisplay" src="" alt="Character Image"/>
-            </div>
-            <div class="question-container">
-                <div id="choices" class="buttons"></div>
-                <p id="results"></p>
-            </div>
-                    
-            <button id="btnback" class="button is-primary">Back to start</button>
-
-            <!-- High Scores Section -->
-            <div id="highScoresPanel" class="panel"></div>
-            <!-- Reset High Scores Button -->
-            <button id="resetHighScores" class="button is-danger">Reset High Scores</button>
+    <div id="quiz-container">
+        <progress id="progressBar" class="progress is-info" value="0" max="100">15%</progress>
+        <h1>Marvel Quiz</h1>
+        <div class="image-container">
+            <img id="imageDisplay" src="" alt="Character Image"/>
         </div>
-    </section>
+        <div class="question-container">
+            <div id="choices"></div>
+            <div id="results"></div>
+        </div>
+                
+        <button id="btnback" class="acknowledgment">Back to start</button>
+           
+            <div id="modal" class="ak-modal">
+                <div class="modal-content">
+                    <p>By accepting this acknowledgment you knowingly forfit the quiz and any potential score.</p>
+                    <button id="acptbtn" class="button">Accept</button>
+                    <button id="declnbtn" class="button">Decline</button>
+                </div>
+            </div>
+    </div>
     <script src="assets/Scripts/MarvelQ.js"></script>
+    
 </body>
 </html>

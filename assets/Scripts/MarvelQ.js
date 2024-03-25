@@ -128,21 +128,13 @@ function getHighScores() {
 
 function displayHighScores() {
     var highScores = getHighScores();
-    var highScoresPanel = document.getElementById('highScoresPanel');
-    highScoresPanel.innerHTML = '<p class="panel-heading">High Scores</p>';
+    var highScoresHtml = '<h3>High Scores</h3><ul>';
     highScores.forEach(score => {
-        highScoresPanel.innerHTML += `<a class="panel-block">${score.name} : ${score.score}</a>`;
+        highScoresHtml += `<li>${score.name} : ${score.score}</li>`;
     });
+    highScoresHtml += '</ul>';
+    document.getElementById('quiz-container').innerHTML += highScoresHtml;
 }
-
-function resetHighScores() {
-    localStorage.removeItem('highScores');
-    displayHighScores(); // Update the display
-}
-
-document.getElementById('resetHighScores').addEventListener('click', resetHighScores);
-
-    
 function isPlaceholderImage(thumbnail) {
     return thumbnail.path.includes("image_not_available") || thumbnail.path.includes("placeholder");
 }
@@ -166,7 +158,6 @@ function endQuiz() {
 
 // Load a random character when the page loads
 quizCharacters();
-displayHighScores();
 
 
 
