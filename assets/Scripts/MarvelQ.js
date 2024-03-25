@@ -191,9 +191,6 @@ function restartQuiz() {
     score = 0; // Reset the score
     questionCount = 0; // Reset the question count
     quizCharacters(); // Start the quiz again
-
-    document.getElementById("restartQuiz").classList.add("hiddenElement");
-    document.getElementById("clearHighScores").classList.add("hiddenElement");
 }
 
 // Function to end the quiz
@@ -215,7 +212,7 @@ function endQuiz() {
 
 function clearHighScores() {
     localStorage.removeItem('highScores');
-    document.getElementById('quiz-container').innerHTML = '';
+    displayHighScores();
 }
 
 document.getElementById("restartQuiz").addEventListener("click", restartQuiz);
