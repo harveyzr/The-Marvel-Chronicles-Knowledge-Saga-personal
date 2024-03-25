@@ -137,7 +137,7 @@ function displayHighScores() {
     var highScores = getHighScores();
     var highScoresHtml = '<h3>High Scores</h3><ul>';
     highScores.forEach(score => {
-        highScoresHtml += `<li>${score.name} - ${score.score}</li>`;
+        highScoresHtml += `<li>${score.name} : ${score.score}</li>`;
     });
     highScoresHtml += '</ul>';
     document.getElementById('quiz-container').innerHTML += highScoresHtml;
