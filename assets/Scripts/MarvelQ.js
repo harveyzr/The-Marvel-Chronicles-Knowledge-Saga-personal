@@ -148,7 +148,7 @@ function endQuiz() {
     var restartButton = document.createElement('button');
     restartButton.id = 'restart-button';
     restartButton.textContent = 'Restart Quiz';
-    restartButton.addEventListener('click', restartQuiz);
+    restartButton.addEventListener('click', quizCharacters);
 
     quizContainer.appendChild(restartButton);
 
@@ -162,8 +162,6 @@ function restartQuiz() {
     quizCharacters(); // Start the quiz again
 }
 
-console.log(restartQuiz.innerHTML);
-console.log(restartQuiz);
 
 // Load a random character when the page loads
 quizCharacters();
