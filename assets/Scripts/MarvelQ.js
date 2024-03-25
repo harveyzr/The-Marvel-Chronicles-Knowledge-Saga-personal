@@ -147,22 +147,11 @@ function isPlaceholderImage(thumbnail) {
     return thumbnail.path.includes("image_not_available") || thumbnail.path.includes("placeholder");
 }
 
-// Add event listener for reset button
-document.getElementById('resetButton').addEventListener('click', function() {
-    restartQuiz();
-});
-
-// Add event listener for high scores reset button
-document.getElementById('resetHighScoresButton').addEventListener('click', function() {
-    resetHighScores();
-});
-
-// Function to reset high scores
-function resetHighScores() {
-    localStorage.removeItem('highScores');
-    displayHighScores(); // Update display to reflect the change
+function restartQuiz() {
+    score = 0; // Reset the score
+    questionCount = 0; // Reset the question count
+    quizCharacters(); // Start the quiz again
 }
-
 
 function endQuiz() {
     var quizContainer = document.getElementById('quiz-container');
