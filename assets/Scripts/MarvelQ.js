@@ -48,6 +48,9 @@ function updateProgressBar() {
 
 function quizCharacters() {
 
+    document.getElementById("restartQuizBtn").classList.add("hidden");
+    document.getElementById("clearHighScoresBtn").classList.add("hidden");
+
     if (questionCount >= 10) {
         endQuiz();
         return; // Exit the function if the quiz has ended
@@ -151,6 +154,9 @@ function restartQuiz() {
     score = 0; // Reset the score
     questionCount = 0; // Reset the question count
     quizCharacters(); // Start the quiz again
+
+    document.getElementById("restartQuizBtn").classList.add("hidden");
+    document.getElementById("clearHighScoresBtn").classList.add("hidden");
 }
 
 function endQuiz() {
@@ -160,9 +166,18 @@ function endQuiz() {
     quizContainer.innerHTML = `<h2>Quiz ended</h2><p>Your score: ${score}</p>`;
    
     displayHighScores();
+
+    document.getElementById("restartQuizBtn").classList.remove("hidden");
+    document.getElementById("clearHighScoresBtn").classList.remove("hidden");
 }
 
+function clearHighScores() {
+    localStorage.removeItem('highScores');
+    displayHighScores();
+}
 
+document.getElementById("restartQuiz").addEventListener("click", restartQuiz);
+document.getElementById("clearHighScores").addEventListener("click", clearHighScores);
 
 // Load a random character when the page loads
 quizCharacters();

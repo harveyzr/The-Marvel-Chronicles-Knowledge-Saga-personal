@@ -75,3 +75,7 @@ padding-bottom: 20px;
     color: black;
     font-size: 36px;
 }
+
+.hiddenElement{
+    display: none;
+}
