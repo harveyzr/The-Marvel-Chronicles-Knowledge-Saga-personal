@@ -139,32 +139,38 @@ function isPlaceholderImage(thumbnail) {
     return thumbnail.path.includes("image_not_available") || thumbnail.path.includes("placeholder");
 }
 
+function setupKeyboardShortcut() {
+    document.addEventListener('keydown', function(event) {
+        if (event.code === 'KeyR') {
+            console.log('R key pressed, restarting quiz...');
+            restartQuiz();
+        }
+    });
+}
+
+// Call this function once to set up the keyboard shortcut.
+setupKeyboardShortcut();
+
 function restartQuiz() {
-    console.log("restarting quiz");
     score = 0; // Reset the score
     questionCount = 0; // Reset the question count
     quizCharacters(); // Start the quiz again
 }
 
+// The rest of your code remains unchanged
+
+
 function endQuiz() {
-    console.log("ending quiz");
     var quizContainer = document.getElementById('quiz-container');
     var name = prompt("Enter your name for the high score table:", "Your Name Here");
     saveHighScore(name, score);
     quizContainer.innerHTML = `<h2>Quiz ended</h2><p>Your score: ${score}</p>`;
 
-    var restartButton = document.createElement('button');
-    restartButton.id = 'restart-button';
-    restartButton.textContent = 'Restart Quiz';
-    quizContainer.appendChild(restartButton);
 
-    restartButton.addEventListener('click', function() {
-        console.log("Restart button clicked."); // Log when the restart button is clicked
-        restartQuiz();
-     });
+
     displayHighScores();
-
 }
+
 
 // Load a random character when the page loads
 quizCharacters();
