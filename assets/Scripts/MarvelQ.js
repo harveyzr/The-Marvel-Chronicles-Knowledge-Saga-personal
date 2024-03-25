@@ -162,7 +162,7 @@ function endQuiz() {
     displayHighScores();
 }
 
-
+console.log(endQuiz);
 
 // Load a random character when the page loads
 quizCharacters();
