@@ -39,6 +39,12 @@ function fetchCharacterImage(character, retryCount) {
     tempImage.src = image;
 }
 
+function updateProgressBar() {
+    var progressBar = document.getElementById("progressBar");
+    if (progressBar) {
+        progressBar.value += 10;
+    }
+}
 
 function quizCharacters() {
 
@@ -60,6 +66,7 @@ function quizCharacters() {
                 fetchCharacterImage(currentCharacter, 0);
                 displayQuiz(characterName);
                 questionCount++; 
+                updateProgressBar();
         }else{
             quizCharacters();
         }
@@ -135,6 +142,7 @@ function displayHighScores() {
     highScoresHtml += '</ul>';
     document.getElementById('quiz-container').innerHTML += highScoresHtml;
 }
+
 function isPlaceholderImage(thumbnail) {
     return thumbnail.path.includes("image_not_available") || thumbnail.path.includes("placeholder");
 }
