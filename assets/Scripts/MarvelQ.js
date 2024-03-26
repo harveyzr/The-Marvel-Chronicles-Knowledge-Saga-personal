@@ -173,22 +173,13 @@ function getHighScores() {
 // Function to display the high scores
 function displayHighScores() {
     var highScores = getHighScores();
-    var highScoresList = document.getElementById('highScoresList');
-    highScoresList.innerHTML = '<ul>';
+    var highScoresHtml = '<h3>High Scores</h3><ul>';
     highScores.forEach(score => {
-        highScoresList.innerHTML += `<li>${score.name} : ${score.score}</li>`;
+        highScoresHtml += `<li>${score.name} : ${score.score}</li>`;
     });
-    highScoresList.innerHTML += '</ul>';
+    highScoresHtml += '</ul>';
+    document.getElementById('quiz-container').innerHTML += highScoresHtml;
 }
-
-document.getElementById('clearHighScores').addEventListener('click', function() {
-    clearHighScores();
-    displayHighScores(); // Refresh the high scores display
-});
-
-// Initial display of high scores
-displayHighScores();
-
 
 // Function to check if an image is a placeholder
 function isPlaceholderImage(thumbnail) {
